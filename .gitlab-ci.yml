@@ -1,0 +1,27 @@
+stages:
+    - build
+    - test
+    - package
+
+build_job:
+    stage: build
+    script:
+        - cd backend/Integrador/digitalBooking/digitalBooking
+        - "mvn compile"
+        - echo "compile bien"
+
+test_job:
+    stage: test
+    script:
+        - cd backend/Integrador/digitalBooking/digitalBooking
+        - "mvn clean test"
+
+package_job:
+    stage: package
+    script:
+        - cd backend/Integrador/digitalBooking/digitalBooking
+        - "mvn package"
+    artifacts:
+        paths:
+            - target/consoleapp.jar
+
